@@ -10,5 +10,6 @@
 ## Links
 - [extendedmode](https://github.com/extendedmode/extendedmode)
 - [es_extended](https://github.com/esx-framework/es_extended/tree/v1-final)
-- ABRIRP Website (https://id.abriroleplay.xyz)
-- Discord ABRIRP (https://discord.com/invite/mGeAVa7)
+- [ambulancejob](https://github.com/esx-framework/esx_ambulancejob)
+- [ABRIRP Websit] (https://id.abriroleplay.xyz)
+- [Discord ABRIRP] (https://discord.com/invite/mGeAVa7)
