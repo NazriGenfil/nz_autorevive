@@ -10,5 +10,5 @@
 ## Links
 - [extendedmode](https://github.com/extendedmode/extendedmode)
 - [es_extended](https://github.com/esx-framework/es_extended/tree/v1-final)
-- ABRIRP Website [JoinUs] (https://id.abriroleplay.xyz)
-- Discord ABRIRP [Discord] (https://discord.com/invite/mGeAVa7)
+- ABRIRP Website (https://id.abriroleplay.xyz)
+- Discord ABRIRP (https://discord.com/invite/mGeAVa7)
