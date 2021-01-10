@@ -1,2 +1,14 @@
-# nz_autorevive
- Sistem otomatis revive ketika EMS tidak ada di kota
+## nz_autorevive
+
+## Requirements
+- extendedmode/es_extended v1-final
+- ambulance job
+
+## Features
+- Otomatis revive ketika ems 0 di kota (dapat di setting di config.lua)
+
+## Links
+- [extendedmode](https://github.com/extendedmode/extendedmode)
+- [es_extended](https://github.com/esx-framework/es_extended/tree/v1-final)
+- ABRIRP Website [JoinUs] (https://id.abriroleplay.xyz)
+- Discord ABRIRP [Discord] (https://discord.com/invite/mGeAVa7)
