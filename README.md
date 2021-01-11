@@ -1,4 +1,4 @@
-## nz_autorevive
+# nz_autorevive
 
 ## Requirements
 - extendedmode/es_extended v1-final
@@ -13,3 +13,11 @@
 - [ambulancejob](https://github.com/esx-framework/esx_ambulancejob)
 - [ABRIRP Website](https://id.abriroleplay.xyz)
 - [Discord ABRIRP](https://discord.com/invite/mGeAVa7)
+
+## Disclaimer
+
+[ID]
+DILANAG MENJUAL BELIKAN SCRIPT INI
+
+[EN]
+DO NOT SELL THIS SCRIPT
