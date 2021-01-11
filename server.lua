@@ -16,3 +16,17 @@ ESX.RegisterServerCallback('nz_autorevive:getConnectedEMS', function(source, cb)
 	cb(amount)
 		
 end)
+
+RegisterServerEvent('nz_autorevive:setDeathStatus')
+AddEventHandler('nz_autorevive:setDeathStatus', function(isDead)
+	local identifier = GetPlayerIdentifiers(source)[1]
+
+	if type(isDead) ~= 'boolean' then
+		return
+	end
+
+	MySQL.Sync.execute('UPDATE users SET is_dead = @isDead WHERE identifier = @identifier', {
+		['@identifier'] = identifier,
+		['@isDead'] = isDead
+	})
+end)

@@ -38,7 +38,7 @@ AddEventHandler('nz_autorevive:revive', function()
 	local playerPed = PlayerPedId()
 	local coords = GetEntityCoords(playerPed)
 
-	--TriggerServerEvent('esx_ambulancejob:setDeathStatus', false)
+	TriggerServerEvent('nz_autorevive:setDeathStatus', false)
 
 	Citizen.CreateThread(function()
 		DoScreenFadeOut(800)
