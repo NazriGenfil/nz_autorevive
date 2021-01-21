@@ -41,6 +41,7 @@ Citizen.CreateThread(function()
 			if mati then
 				Citizen.Wait(100)
 				TriggerEvent('nz_autorevive:revive', ped)
+				mati = false
 			end
 
 		else
