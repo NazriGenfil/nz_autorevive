@@ -12,7 +12,8 @@ local Keys = {
 
 ESX = nil
 
-local InAction = false
+local loop = false
+local mati = false
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -21,16 +22,64 @@ Citizen.CreateThread(function()
 	end
 end)
 
+-- Citizen.CreateThread(function()
+--     while true do
+-- 		Citizen.Wait(500)
+-- 		ESX.TriggerServerCallback('nz_autorevive:getConnectedEMS', function(amount)
+-- 			local ped = PlayerPedId()
+-- 			if amount < Config.ServiceCount and IsEntityDead(ped) then
+-- 				print("ems enggaa cukup")
+-- 				Citizen.Wait(10)
+-- 				TriggerEvent('nz_autorevive:revive', ped)
+-- 			else
+-- 				print("ems cukup")
+-- 			end
+-- 		end)
+--     end
+-- end)
+
+AddEventHandler('esx:onPlayerDeath', function(data)
+    mati = true
+end)
+
+AddEventHandler('playerSpawned', function(spawn)
+    mati = false
+end)
+
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(0)
+
+		ESX.TriggerServerCallback('nz_autorevive:getConnectedEMS', function(amount)
+
+			if amount < Config.ServiceCount then
+				loop = true
+			else
+				loop = false
+			end
+
+		end)
+
+	end
+end)
+
 Citizen.CreateThread(function()
     while true do
-		Citizen.Wait(500)
-		ESX.TriggerServerCallback('nz_autorevive:getConnectedEMS', function(amount)
-			local ped = PlayerPedId()
-			if amount < Config.ServiceCount and IsEntityDead(ped) then
-				Citizen.Wait(10)
+		Citizen.Wait(1000)
+		
+		if loop then
+			--print("loop")
+
+			if mati then
+				Citizen.Wait(100)
+				print("revive")
 				TriggerEvent('nz_autorevive:revive', ped)
 			end
-		end)
+
+		else
+			Citizen.Wait(500)
+		end
+		
     end
 end)
 
