@@ -10,28 +10,8 @@ Citizen.CreateThread(function()
 	end
 end)
 
--- Citizen.CreateThread(function()
---     while true do
--- 		Citizen.Wait(500)
--- 		ESX.TriggerServerCallback('nz_autorevive:getConnectedEMS', function(amount)
--- 			local ped = PlayerPedId()
--- 			if amount < Config.ServiceCount and IsEntityDead(ped) then
--- 				print("ems enggaa cukup")
--- 				Citizen.Wait(10)
--- 				TriggerEvent('nz_autorevive:revive', ped)
--- 			else
--- 				print("ems cukup")
--- 			end
--- 		end)
---     end
--- end)
-
 AddEventHandler('esx:onPlayerDeath', function(data)
     mati = true
-end)
-
-AddEventHandler('playerSpawned', function(spawn)
-    mati = false
 end)
 
 Citizen.CreateThread(function()
@@ -47,7 +27,8 @@ Citizen.CreateThread(function()
 			end
 
 		end)
-
+		
+		Citizen.Wait(500)
 	end
 end)
 
@@ -56,11 +37,9 @@ Citizen.CreateThread(function()
 		Citizen.Wait(1000)
 		
 		if loop then
-			--print("loop")
 
 			if mati then
 				Citizen.Wait(100)
-				print("revive")
 				TriggerEvent('nz_autorevive:revive', ped)
 			end
 
@@ -109,5 +88,5 @@ function RespawnPed(ped, coords, heading)
 
 	TriggerServerEvent('esx:onPlayerSpawn')
 	TriggerEvent('esx:onPlayerSpawn')
-	TriggerEvent('playerSpawned') -- compatibility with old scripts, will be removed soon
+	TriggerEvent('playerSpawned')
 end
