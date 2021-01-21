@@ -14,7 +14,7 @@ AddEventHandler('esx:onPlayerDeath', function(data)
     mati = true
 end)
 
-Citizen.CreateThread(function()
+Citizen.CreateThread(function() 
 	while true do
 		Citizen.Wait(0)
 
