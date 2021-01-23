@@ -1,8 +1,5 @@
 ESX = nil
 
-local loop = false
-local mati = false
-
 Citizen.CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -11,47 +8,10 @@ Citizen.CreateThread(function()
 end)
 
 AddEventHandler('esx:onPlayerDeath', function(data)
-    mati = true
+	revive(ped)
 end)
 
-Citizen.CreateThread(function() 
-	while true do
-		Citizen.Wait(0)
-
-		ESX.TriggerServerCallback('nz_autorevive:getConnectedEMS', function(amount)
-
-			if amount < Config.ServiceCount then
-				loop = true
-			else
-				loop = false
-			end
-
-		end)
-		
-		Citizen.Wait(500)
-	end
-end)
-
-Citizen.CreateThread(function()
-    while true do
-		Citizen.Wait(1000)
-		
-		if loop then
-
-			if mati then
-				Citizen.Wait(100)
-				TriggerEvent('nz_autorevive:revive', ped)
-				mati = false
-			end
-
-		else
-			Citizen.Wait(500)
-		end
-		
-    end
-end)
-
-AddEventHandler('nz_autorevive:revive', function()
+function revive(ped)
 	local playerPed = PlayerPedId()
 	local coords = GetEntityCoords(playerPed)
 
@@ -79,7 +39,8 @@ AddEventHandler('nz_autorevive:revive', function()
 		StopScreenEffect('DeathFailOut')
 		DoScreenFadeIn(800)
 	end)
-end)
+end
+
 
 function RespawnPed(ped, coords, heading)
 	SetEntityCoordsNoOffset(ped, coords.x, coords.y, coords.z, false, false, false, true)
