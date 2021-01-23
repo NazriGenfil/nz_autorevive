@@ -8,7 +8,13 @@ Citizen.CreateThread(function()
 end)
 
 AddEventHandler('esx:onPlayerDeath', function(data)
-	revive(ped)
+	ESX.TriggerServerCallback('nz_autorevive:getConnectedEMS', function(amount)
+
+		if amount < Config.ServiceCount then
+			revive(ped)
+		end
+		
+	end)
 end)
 
 function revive(ped)
@@ -40,7 +46,6 @@ function revive(ped)
 		DoScreenFadeIn(800)
 	end)
 end
-
 
 function RespawnPed(ped, coords, heading)
 	SetEntityCoordsNoOffset(ped, coords.x, coords.y, coords.z, false, false, false, true)
