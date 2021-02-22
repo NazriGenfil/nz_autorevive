@@ -11,7 +11,12 @@ AddEventHandler('esx:onPlayerDeath', function(data)
 	ESX.TriggerServerCallback('nz_autorevive:getConnectedEMS', function(amount)
 
 		if amount < Config.ServiceCount then
-			revive(ped)
+			if Config.FeeAfterRevive then
+				TriggerServerEvent('nz_autorevive:FeeAfterRevive')
+				revive(ped)
+			else
+				revive(ped)
+			end
 		end
 		
 	end)

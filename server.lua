@@ -28,5 +28,12 @@ AddEventHandler('nz_autorevive:setDeathStatus', function(isDead)
 	MySQL.Sync.execute('UPDATE users SET is_dead = @isDead WHERE identifier = @identifier', {
 		['@identifier'] = identifier,
 		['@isDead'] = isDead
-	})
+	})	
+end)
+
+RegisterServerEvent('nz_autorevive:FeeAfterRevive')
+AddEventHandler('nz_autorevive:FeeAfterRevive', function()
+	local xPlayer = ESX.GetPlayerFromId(source)
+	xPlayer.removeAccountMoney('bank', Config.Fee)
+	xPlayer.showNotification("~r~kamu telah membayar biaya revive sebesar ~g~Rp.".. Config.Fee)
 end)
