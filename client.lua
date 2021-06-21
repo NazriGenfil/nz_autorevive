@@ -48,7 +48,8 @@ function revive(ped)
 		RespawnPed(playerPed, formattedCoords, 0.0)
 
 		StopScreenEffect('DeathFailOut')
-		DoScreenFadeIn(800)
+        	DoScreenFadeIn(800)
+        	TriggerScreenblurFadeOut(0)
 	end)
 end
 
